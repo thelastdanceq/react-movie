@@ -7,8 +7,19 @@ export default class Search extends Component {
             search: "",
         }
     }
+    searchData = () => {
+        const { movies, updateParent } = this.props;
+        updateParent([], true);
+        fetch(`http://www.omdbapi.com/?apikey=dca66438&s=${this.state.search}`)
+            .then(response => { return response.json() })
+            .then(data => {
+                updateParent(data.Search, false);
+                this.state.search = "";
+            });
+
+    }
+
     render() {
-        const { movies } = this.props;
         return (
             <div className="row">
                 <div className="col s12">
@@ -22,12 +33,18 @@ export default class Search extends Component {
                             className="validate"
                             value={this.state.search}
                             onChange={(e) => this.setState({ search: e.target.value })}
+                            onKeyDown={(e) => {
+                                if (e.code === "Enter") {
+                                    this.searchData();
+                                }
+                            }}
                         />
                         <button
                             className='btn search-btn e57373 red lighten-2'
                             onClick={() => {
-
+                                this.searchData()
                             }}
+
                         > Search</button>
                     </div>
                 </div>

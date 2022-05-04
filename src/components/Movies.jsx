@@ -10,11 +10,13 @@ export default class Movies extends Component {
 
         const { movies } = this.props;
         return (
-            <div className='movies'>{movies.map((movie) => {
-                return (
-                    <Movie key={movie.imdbID} movie={movie} />
-                )
-            })}</div>
+            movies ?
+                <div className='movies'>{movies.map((movie) => {
+                    return (
+                        <Movie key={movie.imdbID} movie={movie} />
+                    )
+                })}</div>
+                : <h4>Not Found</h4>
         )
 
     }

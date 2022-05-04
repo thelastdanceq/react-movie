@@ -19,11 +19,11 @@ export default class Main extends Component {
             })
     }
     render() {
-        const { movies, isLoading } = this.state;
+        const { movies } = this.state;
         return (
-            movies.length ?
+            !this.state.isLoading ?
                 <>
-                    <Search movies ={movies} />
+                    <Search movies={movies} updateParent={(data, loadingState) => { this.setState({ movies: data, isLoading: loadingState }) }} />
                     <Movies movies={movies} />
                 </>
                 : <Preloader />
