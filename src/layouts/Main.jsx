@@ -14,10 +14,14 @@ export default class Main extends Component {
         }
     }
     componentDidMount() {
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=avengers`)
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=avengers`)
             .then(response => { return response.json() })
             .then(data => {
                 this.setState({ movies: data.Search, isLoading: false });
+            })
+            .catch((err) => {
+                console.log(err);
+                this.setState({ isLoading: false })
             })
     }
     render() {

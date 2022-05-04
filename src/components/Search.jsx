@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+const API_KEY = process.env.REACT_APP_API_KEY
+
 
 export default class Search extends Component {
     constructor(props) {
@@ -12,17 +14,23 @@ export default class Search extends Component {
         const { movies, updateParent } = this.props;
         updateParent([], true);
         this.state.radio === 'All' ?
-            fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}`)
+            fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}`)
                 .then(response => { return response.json() })
                 .then(data => {
                     updateParent(data.Search, false);
 
+                }).catch((err) => {
+                    console.log(err);
+                    this.setState({ isLoading: false })
                 }) :
-            fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}&type=${this.state.radio.toLowerCase()}`)
+            fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}&type=${this.state.radio.toLowerCase()}`)
                 .then(response => { return response.json() })
                 .then(data => {
                     updateParent(data.Search, false);
 
+                }).catch((err) => {
+                    console.log(err);
+                    this.setState({ isLoading: false })
                 })
 
 
