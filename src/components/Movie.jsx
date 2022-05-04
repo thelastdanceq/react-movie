@@ -7,7 +7,7 @@ export default class Movie extends Component {
     render() {
         const { movie } = this.props;
         return (
-            <div className="card">
+            <div className="card #ef9a9a red lighten-3">
                 <div className="card-image waves-effect waves-block waves-light">
                     <img className="activator" src={movie.Poster} />
                 </div>

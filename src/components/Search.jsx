@@ -48,7 +48,7 @@ export default class Search extends Component {
                             <input
                                 placeholder='Search'
                                 type="search"
-                                className="validate"
+                                className="validate search-input"
                                 value={this.state.search}
                                 onChange={(e) => this.setState({ search: e.target.value })}
                                 onKeyDown={(e) => {
@@ -71,6 +71,7 @@ export default class Search extends Component {
                     <p>
                         <label>
                             <input
+                                className="with-gap lighten-3"
                                 name="group1"
                                 type="radio"
                                 id='All'
@@ -87,7 +88,9 @@ export default class Search extends Component {
                     </p>
                     <p>
                         <label>
-                            <input name="group1"
+                            <input
+                                className="with-gap red lighten-3"
+                                name="group1"
                                 type="radio"
                                 checked={this.state.radio === "Movie"}
                                 id='Movie'
@@ -103,7 +106,7 @@ export default class Search extends Component {
                     <p>
                         <label>
                             <input
-                                className="with-gap"
+                                className="with-gap red lighten-3"
                                 name="group1"
                                 type="radio"
                                 checked={this.state.radio === "Series"}
