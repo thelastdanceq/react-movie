@@ -12,17 +12,17 @@ export default class Search extends Component {
         const { movies, updateParent } = this.props;
         updateParent([], true);
         this.state.radio === 'All' ?
-            fetch(`http://www.omdbapi.com/?apikey=dca66438&s=${this.state.search}`)
+            fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}`)
                 .then(response => { return response.json() })
                 .then(data => {
                     updateParent(data.Search, false);
-                    this.state.search = "";
+
                 }) :
-            fetch(`http://www.omdbapi.com/?apikey=dca66438&s=${this.state.search}&type=${this.state.radio.toLowerCase()}`)
+            fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}&type=${this.state.radio.toLowerCase()}`)
                 .then(response => { return response.json() })
                 .then(data => {
                     updateParent(data.Search, false);
-                    this.state.search = "";
+
                 })
 
 
@@ -67,7 +67,12 @@ export default class Search extends Component {
                                 type="radio"
                                 id='All'
                                 checked={this.state.radio === "All"}
-                                onChange={(e) => { this.setState({ radio: e.target.id }) }}
+                                onChange={(e) => {
+                                    this.setState(() => ({ radio: e.target.id }), () => {
+                                        this.searchData();
+                                    })
+
+                                }}
                             />
                             <span>All</span>
                         </label>
@@ -78,8 +83,12 @@ export default class Search extends Component {
                                 type="radio"
                                 checked={this.state.radio === "Movie"}
                                 id='Movie'
-                                onChange={(e) => { this.setState({ radio: e.target.id }) }}
-                            />
+                                onChange={(e) => {
+                                    this.setState(() => ({ radio: e.target.id }), () => {
+                                        this.searchData();
+                                    })
+
+                                }} />
                             <span>Movie</span>
                         </label>
                     </p>
@@ -91,8 +100,12 @@ export default class Search extends Component {
                                 type="radio"
                                 checked={this.state.radio === "Series"}
                                 id='Series'
-                                onChange={(e) => { this.setState({ radio: e.target.id }) }}
-                            />
+                                onChange={(e) => {
+                                    this.setState(() => ({ radio: e.target.id }), () => {
+                                        this.searchData();
+                                    })
+
+                                }} />
                             <span>Series</span>
                         </label>
                     </p>
