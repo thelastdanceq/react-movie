@@ -33,10 +33,7 @@ const Search = (props) => {
                     setIsLoading(false);
                 })
     }
-    // useEffect(() => {
-    //     console.log("radio updated");
-    //     searchData();
-    // }, [radio])
+
 
     return (
         <div className="search">
@@ -77,9 +74,11 @@ const Search = (props) => {
                             type="radio"
                             id='All'
                             checked={radio === "All"}
+                            onInput={() => {
+                                searchData()
+                            }}
                             onChange={(e) => {
                                 setRadio(e.target.id);
-
                             }}
                         />
                         <span>All</span>
@@ -93,6 +92,9 @@ const Search = (props) => {
                             type="radio"
                             checked={radio === "Movie"}
                             id='Movie'
+                            onInput={() => {
+                                searchData()
+                            }}
                             onChange={(e) => {
                                 setRadio(e.target.id);
 
@@ -108,6 +110,9 @@ const Search = (props) => {
                             type="radio"
                             checked={radio === "Series"}
                             id='Series'
+                            onInput={() => {
+                                searchData()
+                            }}
                             onChange={(e) => {
                                 setRadio(e.target.id);
 
