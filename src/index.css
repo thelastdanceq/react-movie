@@ -35,6 +35,7 @@ body {
 }
 
 .card {
+  cursor: pointer;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -77,4 +78,48 @@ body {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #444;
+}
+
+.custom-modal {
+  z-index: 9999;
+  width: 60vw;
+  height: 75vh;
+  background: #ef9a9a;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 1px 200px #000;
+
+}
+
+.image-block {
+  width: 30%;
+  height: 50%;
+  /* background-color: white; */
+
+}
+
+.discription-block {
+  width: 70%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  text-align: center;
+}
+
+.discription-block span {
+  flex-grow: 1;
+}
+
+.statystic-block {
+  width: 100%;
+  height: 50%;
+  font-size: 23px;
+  justify-content: center;
+  /* background-color: orange; */
 }
