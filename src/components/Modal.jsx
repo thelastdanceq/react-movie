@@ -1,7 +1,5 @@
-import React from 'react'
-
-
-export default function Modal({ isModalActive }) {
+import React from 'react';
+export default function Modal({ isModalActive, setIsModalActive }) {
     console.log(isModalActive);
     const { Title,
         Poster,
@@ -31,6 +29,12 @@ export default function Modal({ isModalActive }) {
             <div className="statystic-block">
                 {Plot}
             </div>
-        </div>
+            <div className="close-btn"
+                onClick={() => {
+                    setIsModalActive(false)
+                }}>
+                <i className="small material-icons">close</i>
+            </div>
+        </div >
     )
 }

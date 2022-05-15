@@ -45,7 +45,7 @@ export default function Main() {
 
             {
                 isModalActive ?
-                    <Modal isModalActive={isModalActive} /> :
+                    <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive} /> :
                     null
             }
         </context.Provider >

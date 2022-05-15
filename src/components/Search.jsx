@@ -4,7 +4,7 @@ const API_KEY = process.env.REACT_APP_API_KEY
 
 
 const Search = (props) => {
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState("avengers")
     const [radio, setRadio] = useState("All")
     const [isLoading, setIsLoading] = useState(false)
 
